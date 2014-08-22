@@ -1,0 +1,23 @@
+# Site settings
+title: Cedric Fung (vecio)
+description: "Strive to formulate elegant code, simple design and friendly machine."
+baseurl: ""
+url: "https://vec.io"
+twitter_username: cedricfung
+github_username: vecio
+facebook_username: cedric.vec.io
+
+# Build settings
+permalink: /:title
+highlighter: pygments
+markdown: redcarpet
+redcarpet:
+  extensions: [autolink, no_intra_emphasis, strikethrough, tables, lax_spacing, space_after_headers, superscript]
+
+assets:
+  cache: false
+  sources:
+    - _assets/images
+    - _assets/javascripts
+    - _assets/stylesheets
+    - _assets/vendor
