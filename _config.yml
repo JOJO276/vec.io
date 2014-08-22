@@ -2,9 +2,6 @@
 title: Cedric Fung (vecio)
 description: "Strive to formulate elegant code, simple design and friendly machine."
 url: "https://vec.io"
-twitter_username: cedricfung
-github_username: vecio
-facebook_username: cedric.vec.io
 
 # Build settings
 permalink: /posts/:title
@@ -20,3 +17,12 @@ assets:
     - _assets/javascripts
     - _assets/stylesheets
     - _assets/vendor
+
+author:
+  full_name: Cedric Fung
+  username: vecio
+  avatar: https://secure.gravatar.com/avatar/8042491f13a3a828fcdd2a13290ef77d?r=g&s=256
+  email: cedric@vec.io
+  twitter: cedricfung
+  github: vecio
+  facebook: cedric.vec.io

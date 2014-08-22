@@ -8,7 +8,7 @@ html,
 body {
   font-family: "Merriweather", "Lucida Grande","Lucida Sans Unicode","Helvetica Neue","DejaVu Sans","Open Sans","Verdana","Microsoft YaHei","Hiragino Sans GB","WenQuanYi Micro Hei",sans-serif;
   font-size: 13px;
-  background: #FFFFFF;
+  background: #F5F5F5;
   margin: 0px;
   padding: 0px;
   min-width: 320px;
@@ -47,15 +47,91 @@ img {
   overflow: hidden;
 }
 
+.layout.header {
+  box-sizing: border-box;
+  width: 320px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  text-align: center;
+  padding: 48px 16px;
+
+  .root.link {
+    display: block;
+    text-decoration: none;
+    color: #2E3B40;
+
+    .author.avatar {
+      width: 128px;
+      height: 128px;
+      border-radius: 64px;
+      display: inline-block;
+    }
+
+    h1 {
+      font-size: 36px;
+    }
+  }
+
+  p {
+    color: #19272D;
+    font-size: 15px;
+    line-height: 20px;
+    margin-bottom: 4px;
+
+    a {
+      text-decoration: none;
+      color: #19272D;
+
+      &:hover {
+        text-decoration: underline;
+        color: rgba(50, 130, 42, 1);
+      }
+    }
+  }
+
+  .social.links {
+    margin-top: 32px;
+
+    a {
+      margin: 8px;
+    }
+
+    a i {
+      display: inline-block;
+      text-decoration: none;
+      color: #000000;
+      font-size: 24px;
+      margin: 0;
+    }
+  }
+
+  .shou.tv.link {
+    display: inline-block;
+    margin-top: 32px;
+
+    img {
+      width: 64px;
+      height: 64px;
+    }
+  }
+}
+
+.layout.container {
+  margin-left: 320px;
+  top: 0;
+}
+
 .layout.block {
   box-sizing: border-box;
-  width: 880px;
-  margin: 48px auto 128px;
-  padding: 64px 150px;
-  border: 1px solid #EAECEE;
-  box-shadow: 0px 0px 0px #CCCCCC;
+  width: 800px;
+  max-width: 100%;
+  padding: 48px 64px 128px;
   background: #FFFFFF;
   position: relative;
+  border-left: 1px solid #E2E2E2;
+  border-right: 1px solid #E2E2E2;
 
   .header {
     margin-bottom: 32px;
@@ -129,6 +205,12 @@ img {
     h2 {
       margin-top: 32px;
     }
+
+    .highlight pre {
+      padding: 6px 8px;
+      line-height: 1.4em;
+      overflow-x: auto;
+    }
   }
 
   .social {
@@ -143,7 +225,6 @@ img {
 
       a {
         text-decoration: none;
-        color: #777777;
 
         i {
           margin: 0;
@@ -151,23 +232,39 @@ img {
       }
     }
 
-    .hacker.news a:hover {
+    .hacker.news a {
       color: #FF6600;
+
+      &:hover {
+        color: #FF3300;
+      }
     }
 
-    .twitter a:hover {
+    .twitter a {
       color: #55ACEE;
+
+      &:hover {
+        color: #00AAFF;
+      }
     }
 
-    .facebook a:hover {
+    .facebook a {
       color: #3B558C;
+
+      &:hover {
+        color: #2B659C;
+      }
     }
 
-    .google.plus a:hover {
+    .google.plus a {
       color: #CE352C;
+
+      &:hover {
+        color: #DF352C;
+      }
     }
 
-    .linkedin a:hover {
+    .linkedin a {
       color: #0077B5;
     }
   }
@@ -175,20 +272,46 @@ img {
 
 @media only screen and (max-width : 900px) {
   .layout.block {
-    margin-top: 32px;
-    width: 100%;
-    border: 0 none;
-    padding: 32px 64px;
-
-    .decoration {
-      display: none;
-    }
   }
 }
 
-@media only screen and (max-width : 640px) {
+@media only screen and (max-width : 768px) {
+  .layout.header {
+    width: 100%;
+    position: relative;
+    padding: 12px 8px;
+
+    .root.link {
+      .author.avatar {
+        display: none;
+      }
+
+      h1 {
+        margin: 12px;
+        font-size: 32px;
+      }
+    }
+
+    p, .shou.tv.link {
+      display: none;
+    }
+
+    .social.links {
+      margin: 12px;
+
+      a i {
+        font-size: 20px;
+      }
+    }
+  }
+
+  .layout.container {
+    margin-left: 0;
+    border-top: 1px solid #E2E2E2;
+  }
+
   .layout.block {
-    padding: 8px 16px;
+    padding: 32px 32px 64px;
 
     .content {
       ol li,
@@ -209,6 +332,8 @@ img {
 
 @media only screen and (max-width : 480px) {
   .layout.block {
+    padding: 24px 16px 48px;
+
     .social li {
       margin-right: 8px;
     }
