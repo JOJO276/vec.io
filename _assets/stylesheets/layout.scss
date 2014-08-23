@@ -1,3 +1,5 @@
+@import "font.scss";
+
 ::selection {
   text-shadow: none;
   background-color: green;
@@ -77,6 +79,7 @@ img {
   p {
     color: #19272D;
     font-size: 15px;
+    font-weight: 300;
     line-height: 20px;
     margin-bottom: 4px;
 
