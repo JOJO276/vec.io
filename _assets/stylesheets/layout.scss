@@ -219,6 +219,7 @@ img {
         margin: 15px 0px;
         list-style: outside none none;
         position: relative;
+        padding-left: 32px;
       }
     }
 
@@ -236,7 +237,7 @@ img {
       width: 16px;
       border-radius: 50%;
       position: absolute;
-      left: -28px;
+      left: 0px;
       top: 3px;
     }
 
@@ -247,7 +248,7 @@ img {
       height: 12px;
       background: none repeat scroll 0% 0% #CCCCCC;
       border-radius: 50%;
-      left: -24px;
+      left: 0px;
       top: 6px;
     }
 
@@ -263,8 +264,12 @@ img {
   }
 
   .social {
-    margin: 32px 0 0 -5px;
-    padding: 0;
+    margin-top: 48px;
+
+    ul {
+      margin: 16px 0 0 -5px;
+      padding: 0;
+    }
 
     li {
       list-style: outside none none;
@@ -390,21 +395,6 @@ img {
   .post.block {
     padding: 32px 32px 64px;
     border: 0 none;
-
-    .content {
-      ol li,
-      ul li {
-        padding-left: 32px;
-      }
-
-      ol li:before {
-        left: 2px;
-      }
-
-      ul li:before {
-        left: 2px;
-      }
-    }
   }
 }
 
