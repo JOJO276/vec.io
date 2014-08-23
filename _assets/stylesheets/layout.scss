@@ -14,6 +14,7 @@ body {
   margin: 0px;
   padding: 0px;
   min-width: 320px;
+  min-height: 100%;
   color: #555555;
   text-rendering: optimizeLegibility;
   text-size-adjust: 100%;
@@ -37,6 +38,10 @@ a, object, embed {
 a {
   text-decoration: none;
   color: #008CDD;
+}
+
+a:visited {
+  color: #AAAAAA;
 }
 
 a:hover {
@@ -123,13 +128,35 @@ img {
 
 .layout.container {
   margin-left: 320px;
-  top: 0;
+  min-height: 100%;
 }
 
-.layout.block {
+.posts.list {
+  box-sizing: border-box;
+  background: #FFFFFF;
+  border-left: 1px solid #E2E2E2;
+  margin: 0;
+  padding: 48px 64px 128px;
+
+  .post.item {
+    list-style: none;
+    position: relative;
+    margin-bottom: 16px;
+    padding: 8px 0;
+
+    span {
+      position: absolute;
+      top: 8px;
+      right: 0;
+    }
+  }
+}
+
+.post.block {
   box-sizing: border-box;
   width: 800px;
   max-width: 100%;
+  min-height: 100%;
   padding: 48px 64px 128px;
   background: #FFFFFF;
   position: relative;
@@ -273,11 +300,6 @@ img {
   }
 }
 
-@media only screen and (max-width : 900px) {
-  .layout.block {
-  }
-}
-
 @media only screen and (max-width : 768px) {
   .layout.header {
     width: 100%;
@@ -313,8 +335,13 @@ img {
     border-top: 1px solid #E2E2E2;
   }
 
-  .layout.block {
+  .posts.list {
+    border: 0 none;
+  }
+
+  .post.block {
     padding: 32px 32px 64px;
+    border: 0 none;
 
     .content {
       ol li,
@@ -334,7 +361,7 @@ img {
 }
 
 @media only screen and (max-width : 480px) {
-  .layout.block {
+  .post.block {
     padding: 24px 16px 48px;
 
     .social li {
