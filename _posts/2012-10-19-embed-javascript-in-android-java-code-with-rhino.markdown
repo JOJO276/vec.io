@@ -18,10 +18,10 @@ I use Rails as my server framework, and create a RESTful script resource, so I c
 function hello(java) {
 	if (typeof log != 'undefined') {
     	log("JavaScript say hello to " + java);
-        
+
         log("Also, I can access Java object: " + javaContext);
     }
-    
+
     return { foo: "bar in JavaScript" };
 }
 ```
@@ -36,7 +36,9 @@ Everything begins with you get it. [Download Rhino](https://developer.mozilla.or
 
 In your favorite terminal, type below code to start Rhino console:
 
-	java -jar js.jar
+```bash
+java -jar js.jar
+```
 
 It just works, you can type most JavaScript functions in the Rhino console to test them before coding.
 
@@ -59,35 +61,35 @@ public void runScript() {
 	String source = getScriptFromServer();
     String functionName = "hello";
     Object[] functionParams = new Object[] { "Android" };
-    
+
     // Every Rhino VM begins with the enter()
     // This Context is not Android's Context
 	Context rhino = Context.enter();
-    
+
     // Turn off optimization to make Rhino Android compatible
 	rhino.setOptimizationLevel(-1);
 	try {
 		Scriptable scope = rhino.initStandardObjects();
-        
-        // This line set the javaContext variable in JavaScript
-        ScriptableObject.putProperty(scope, "javaContext", Context.javaToJS(androidContextObject, scope));
+
+    // This line set the javaContext variable in JavaScript
+    ScriptableObject.putProperty(scope, "javaContext", Context.javaToJS(androidContextObject, scope));
 
 		// Note the forth argument is 1, which means the JavaScript source has
-        // been compressed to only one line using something like YUI
+    // been compressed to only one line using something like YUI
 		rhino.evaluateString(scope, RHINO_LOG + source, "ScriptAPI", 1, null);
 
 		// We get the hello function defined in JavaScript
 		Function function = (Function) scope.get(functionName, scope);
-        
-        // Call the hello function with params
+
+    // Call the hello function with params
 		NativeObject result = (NativeObject) function.call(rhino, scope, scope, functionParams));
-        // After the hello function is invoked, you will see logcat output
-        
-        // Finally we want to print the result of hello function
-        String foo = (String) Context.jsToJava(result.get("foo", result), String.class);
-        log(foo);
+    // After the hello function is invoked, you will see logcat output
+
+    // Finally we want to print the result of hello function
+    String foo = (String) Context.jsToJava(result.get("foo", result), String.class);
+    log(foo);
 	} finally {
-    	// We must exit the Rhino VM
+    // We must exit the Rhino VM
 		Context.exit();
 	}
 }
@@ -101,13 +103,17 @@ Rhino and Proguard
 
 When obscure code with Proguard, the following two lines are needed to bypass the warnings and notes for Rhino:
 
-    -dontwarn org.mozilla.javascript.**
-    -dontwarn org.mozilla.classfile.**
+```java
+-dontwarn org.mozilla.javascript.**
+-dontwarn org.mozilla.classfile.**
+```
 
 Even no warings about Rhino, we still can't make Proguard happy, it will throw me an exception:
 
-    java.lang.IllegalArgumentException: Can't find any super classes of [org/mozilla/javascript/tools/debugger/FileWindow] (not even immediate super class [javax/swing/JInternalFrame])
-    
+```java
+java.lang.IllegalArgumentException: Can't find any super classes of [org/mozilla/javascript/tools/debugger/FileWindow] (not even immediate super class [javax/swing/JInternalFrame])
+```
+
 I don't know how to make Proguard ignore the Java classes which produce the error. So I just delete the `org.mozilla.javascript.tools` package from the js.jar file, because I don't need the classes in Rhino tools, which are used as a convenient interactive shell.
 
 
@@ -130,7 +136,7 @@ That's it, unless you use Proguard. When the code obscured with Proguard, even y
 ```java
 ScriptableObject.putProperty(scope, "javaLoader", Context.javaToJS(ScriptAPI.class.getClassLoader(), scope));
 
-private static final String RHINO_READURL = "var ScriptAPI = " + 			    
+private static final String RHINO_READURL = "var ScriptAPI = " +
 	"java.lang.Class.forName(\"" + ScriptAPI.class.getName() + "\", true, javaLoader);" +
 	"var methodRead = ScriptAPI.getMethod(\"readUrl\", [java.lang.String]);" +
 	"var readUrl = function(url) {return methodRead.invoke(null, url);};";

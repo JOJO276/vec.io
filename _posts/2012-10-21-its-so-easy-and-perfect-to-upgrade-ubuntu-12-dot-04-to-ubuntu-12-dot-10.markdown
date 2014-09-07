@@ -44,10 +44,12 @@ After booting into the new Ubuntu, I ran an `apt-get dist-upgrade` command, got 
 
 Luckily, the apt-get log provided an instruction to fix this issue:
 
-    sudo /usr/share/debconf/fix_db.pl
-    sudo dpkg-reconfigure -a
-    
-     
+```bash
+sudo /usr/share/debconf/fix_db.pl
+sudo dpkg-reconfigure -a
+```
+
+
 Root partition disk space disappeared
 -------------------------------------
 
@@ -57,11 +59,13 @@ Ubuntu installation had created an backup of previous 12.04 as a Btrfs subvolume
 
 So it's easy to free the root partition space:
 
-    $ sudo btrfs subvolume list /
-    ID 256 top level 5 path @
-    ID 257 top level 5 path @apt-snapshot-release-upgrade-quantal-2012-10-19_20:29:34
-    
-    $ sudo btrfs subvolume delete /@apt-snapshot-release-upgrade-quantal-2012-10-19_20:29:34
+```bash
+$ sudo btrfs subvolume list /
+ID 256 top level 5 path @
+ID 257 top level 5 path @apt-snapshot-release-upgrade-quantal-2012-10-19_20:29:34
+
+$ sudo btrfs subvolume delete /@apt-snapshot-release-upgrade-quantal-2012-10-19_20:29:34
+```
 
 It's wonderful to learn something about Btrfs. I will be taught many new other things everyday, it's the reason why I keep trying new things.
 

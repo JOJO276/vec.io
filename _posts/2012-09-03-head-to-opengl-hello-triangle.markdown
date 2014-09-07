@@ -58,7 +58,8 @@ After that, add these contents to the only CMakeLists.txt file:
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
 PROJECT(NEWBIE)
 
-ADD_DEFINITIONS(-std=c99 -O3 -funsigned-char -freg-struct-return -Wall -W -Wshadow -Wstrict-prototypes -Wpointer-arith -Winline)
+ADD_DEFINITIONS(-std=c99 -O3 -funsigned-char -freg-struct-return
+    -Wall -W -Wshadow -Wstrict-prototypes -Wpointer-arith -Winline)
 
 FIND_PACKAGE(GLUT)
 FIND_PACKAGE(OpenGL)

@@ -14,7 +14,7 @@ permalink: /:title
 
 The nginx configuration rules are quite simpler than expected:
 
-```c
+```nginx
 rewrite ^/index.html$ / permanent;
 rewrite ^(/.+)/$ $1 permanent;
 rewrite ^(/.+)/index.html$ $1 permanent;

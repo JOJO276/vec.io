@@ -4,7 +4,7 @@ title: "Head to OpenGL: Understand Triangle"
 date:   2012-09-17 06:01:06
 ---
 
-It's time to understand how does the OpenGL render the triangle on the screen. At first, 
+It's time to understand how does the OpenGL render the triangle on the screen. At first,
 I would give you a clue on OpenGL's pipeline.
 
 Client & Server
@@ -39,13 +39,17 @@ glutInit(&argc, argv);
 glutInitDisplayMode(GLUT_DOUBLE | GLUT_ALPHA | GLUT_DEPTH | GLUT_STENCIL);
 ...
 
-// Then we use glClearColor() to change the context's color state, one state among hundreds of states in the OpenGL big struct
+// Then we use glClearColor() to change the context's color state,
+// one state among hundreds of states in the OpenGL big struct
 glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 
-// We want to clear the render window before do other rendering works, so we invoke the glClear() method, which will make the screen full of the color we set with glClearColor(). This behaviour will lasts until we call glClearColor() with another color value.
+// We want to clear the render window before do other rendering works,
+// so we invoke the glClear() method, which will make the screen full
+// of the color we set with glClearColor(). This behaviour will lasts
+// until we call glClearColor() with another color value.
 glClear(GL_COLOR_BUFFER_BIT);
 ```
-    
+
 As the comments said in above code, if you do something to the OpenGL big struct, the effect will lasts to the next time you do something to the same part of the big struct. E.g. once you call `glEnable*`, `glBind*` or some other OpenGL methods, you will set some fields in the big OpenGL struct to some values, and the values will be kept until you change them again. This is the basic and most important **OpenGL workflow**, the basic understanding of OpenGL state machine.
 
 
@@ -66,7 +70,7 @@ sProgram = CreateProgram(vertexShader, fragmentShader);
 glDeleteShader(vertexShader);
 glDeleteShader(fragmentShader);
 ```
-  
+
 The code is more readable than human language. I just created (compiled) two shaders, then created an OpenGL program based on them, at last the shaders are deleted.
 
 More explanations about the procedure would be massive, but for my convinience I wanna say, as OpenGL is an C/S architecture, the program is created at the server side. It also needs to be compiled like our normal C code.
@@ -84,10 +88,10 @@ glBindBuffer(GL_ARRAY_BUFFER, sValuesBuffer);
 glBufferData(GL_ARRAY_BUFFER, sizeof(sValues), sValues, GL_STATIC_DRAW);
 glBindBuffer(GL_ARRAY_BUFFER, 0);
 ```
-    
+
 The `glGenBuffers` call will generate a buffer in OpenGL server's memory, but can't be used until we tell OpenGL how we want to use it.
 
-We use `glBindBuffer(GL_ARRAY_BUFFER, sValuesBuffer)` to indicate that we want to use the genereated buffer as an array. 
+We use `glBindBuffer(GL_ARRAY_BUFFER, sValuesBuffer)` to indicate that we want to use the genereated buffer as an array.
 
 The third method `glBufferData` is where the magic happens. This method will copy `sValues` to OpenGL memory space as a `GL_ARRAY_BUFFER`. The destination of the `GL_ARRAY_BUFFER` is the `sValuesBuffer`. The state machine rocks, once you bind `sValuesBuffer` to `GL_ARRAY_BUFFER`, any later usage of `GL_ARRAY_BUFFER` will be implicitly set to `sValuesBuffer`.
 
@@ -101,7 +105,7 @@ float *arrayBuffer = (float *)sValuesBuffer;
 memcpy(arrayBuffer, sValues, sizeof(sValues));
 arrayBuffer = NULL;
 ```
-    
+
 They look like some buggy C code, but help to understand how does the OpenGL API work.
 
 
@@ -135,7 +139,7 @@ Taste a bit shader
 
 In previous part we give out several instructions to OpenGL server, let it to use `sProgram` to accomplish those commands. Recall that we have linked two shaders, VERTEX\_SHADER and FRAGMENT\_SHADER, with `sProgram`. Indeed, these two shaders are the most important part of the `sProgram`, they will be executed in the OpenGL server, just like our C code compiled and executed in CPU.
 
-The OpenGL shader has its own programming language, called OpenGL shading language, abbreviated as GLSL. GLSL's syntax is very like C's. There're two most used shader called vertex shader and fragment shader, although with different names, they've the same syntax with each other. 
+The OpenGL shader has its own programming language, called OpenGL shading language, abbreviated as GLSL. GLSL's syntax is very like C's. There're two most used shader called vertex shader and fragment shader, although with different names, they've the same syntax with each other.
 
 
 ### Vertex coordinate ###
