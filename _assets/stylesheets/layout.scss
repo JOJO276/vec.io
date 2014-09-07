@@ -50,6 +50,13 @@ img {
   overflow: hidden;
 }
 
+p code {
+  font-family: monospace;
+  font-size: 10px;
+  background: #EEEEEE;
+  padding: 4px;
+}
+
 .layout.header {
   box-sizing: border-box;
   width: 320px;
