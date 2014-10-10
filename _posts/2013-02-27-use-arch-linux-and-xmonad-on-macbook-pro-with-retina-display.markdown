@@ -87,7 +87,7 @@ echo vecio > /etc/hostname
 ln -s /usr/share/zoneinfo/Asia/Hong_Kong /etc/localtime
 hwclock --systohc --utc
 useradd -m -g users -G wheel -s /bin/bash cedric && passwd cedric
-sudo pacman -S sudo
+pacman -S sudo
 nano /etc/sudoers # to uncomment wheel line
 ```
 
@@ -131,7 +131,7 @@ Now generate the boot.efi and place it somewhere such as a USB device:
 
 ```bash
 grub-mkconfig -o boot/grub/grub.cfg
-grub-mkstandalone -o boot.efi -d usr/lib/grub/x86_64-efi -O x86_64-efi -C xz boot/grub/grub.cfg
+grub-mkstandalone -o boot.efi -d usr/lib/grub/x86_64-efi -O x86_64-efi --compress=xz boot/grub/grub.cfg
 ```
 
 Then exit `chroot` and `umount` all filesystems and reboot to Mac OSX again. Launch Disk Utility to format (e.g. erase) _/dev/sda4_ to HFS+, it's the place where grub2's image will live in.
