@@ -193,9 +193,9 @@ Option         "ProbeAllGpus" "false"
 Option         "UseDPLib" "off"
 ```
 
-The screen backlight can be adjusted by change _/sys/class/backlight/gmux\_backlight/brightness_, valid only after `sudo setpci -v -H1 -s 00:01.00 BRIDGE_CONTROL=0`.
+The screen backlight can be adjusted by change `/sys/class/backlight/gmux_backlight/brightness`, valid only after `sudo setpci -v -H1 -s 00:01.00 BRIDGE_CONTROL=0`.
 
-The keyboard backlight can be tuned with _/sys/devices/platform/applesmc.768/leds/smc::kbd\_backlight/brightnes_.
+The keyboard backlight can be tuned with `/sys/devices/platform/applesmc.768/leds/smc::kbd_backlight/brightnes`.
 
 
 Xmonad
@@ -204,7 +204,10 @@ Xmonad
 I prefer Xmonad because I want to learn Haskell, really. The `slim`, `terminator` and some little utilities will also be installed in this step.
 
 ```bash
-yaourt -S xmonad xmonad-contrib cabal-install slim terminator xmobar dmenu-xft trayer scrot xscreensaver feh parcellite pidgin networkmanager-applet xfce4-notifyd gnome-keyring git nautilus ranger
+yaourt -S xmonad xmonad-contrib cabal-install slim terminator \
+         xmobar dmenu-xft trayer scrot xscreensaver feh parcellite \
+         pidgin networkmanager-applet xfce4-notifyd gnome-keyring \
+         git nautilus ranger
 cabal update && cabal install yeganesh
 systemctl enable NetworkManager
 systemctl enable slim
