@@ -1,9 +1,10 @@
 # Site settings
 title: Cedric Fung (vecio)
-description: "Co-founder of Shou.TV"
+description: "Co-founder of Shou"
 url: "https://vec.io"
 
 # Build settings
+exclude: [vendor]
 permalink: /posts/:title
 highlighter: pygments
 markdown: redcarpet
