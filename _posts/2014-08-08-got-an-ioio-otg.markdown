@@ -1,10 +1,10 @@
 ---
 layout: post
-title: "Got a IOIO-OTG"
+title: "Got an IOIO-OTG"
 date:   2014-08-08 09:55:37
 ---
 
-Interested in hardware development, I just don't like some obviously popular things, so instead of Arduino, I ordered a IOIO-OTG.
+Interested in hardware development, I just don't like some obviously popular things, so instead of Arduino, I ordered an IOIO-OTG.
 
 It's much smaller than I expected! No any experiences in hardware development, so I hadn't buy enough components to start hacking with the Android yet.
 
